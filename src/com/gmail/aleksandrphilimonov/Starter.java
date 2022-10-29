@@ -53,5 +53,8 @@ public class Starter {
     }
 
     private static void startNewGame() {
+        Game game = new Game(sizeX, sizeY, amountOfEnemies, transistorsNeeded, moves);
+        game.fillFieldWithEmptyObjects();
+        game.startGame();
     }
 }
