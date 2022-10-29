@@ -3,6 +3,13 @@ package com.gmail.aleksandrphilimonov;
 import java.util.Scanner;
 
 public class Starter {
+
+    public static int rows = 3;
+    public static int columns = 4;
+    public static int amountOfEnemies = 10;
+    public static int transistorsNeeded = 100;
+    public static int moves = 40;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +29,7 @@ public class Starter {
                     break;
 
                 case "2":
-                    openOptionsMenu();
+                    OptionsMenu.showOptionsMenu();
                     break;
 
                 case "3":
