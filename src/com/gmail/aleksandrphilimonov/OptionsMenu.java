@@ -13,17 +13,17 @@ public class OptionsMenu {
 
             switch (command) {
                 case 1:
-                    System.out.println("\nCurrent settings:\n\trows: " + Starter.rows +
-                            "\n\tcolumns: " + Starter.columns +
+                    System.out.println("\nCurrent settings:\n\trows: " + Starter.sizeX +
+                            "\n\tcolumns: " + Starter.sizeY +
                             "\n\tenemies: " + Starter.amountOfEnemies +
                             "\n\ttransistors: " + Starter.transistorsNeeded +
                             "\n\tmoves: " + Starter.moves + '\n');
                     break;
                 case 2:
                     System.out.println("Enter a new value for rows: ");
-                    Starter.rows = scanner.nextInt();
+                    Starter.sizeX = scanner.nextInt();
                     System.out.println("Enter a new value for columns: ");
-                    Starter.columns = scanner.nextInt();
+                    Starter.sizeY = scanner.nextInt();
                     System.out.println("Enter a new value for enemies: ");
                     Starter.amountOfEnemies = scanner.nextInt();
                     System.out.println("Enter a new value for transistors: ");
