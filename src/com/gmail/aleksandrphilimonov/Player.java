@@ -10,16 +10,19 @@ public class Player implements Fieldable {
     private int rowIndex;
     private int columnIndex;
     private Field field;
+    private Game game;
 
     @Override
     public String getSymbol() {
         return " @ ";
     }
 
-    public Player(int rowIndex, int columnIndex, Field field) {
+    public Player(int rowIndex, int columnIndex, Game game) {
         this.rowIndex = rowIndex;
         this.columnIndex = columnIndex;
-        this.field = field;
+        this.game = game;
+        this.field = game.getField();
+        field.setFieldable(rowIndex, columnIndex, this);
     }
 
     public int getRowIndex() {
@@ -38,26 +41,27 @@ public class Player implements Fieldable {
         this.columnIndex = columnIndex;
     }
 
-    public void makeMove(String command) {
-
+    public Boolean makeMove(String command) {
+        Boolean isIncorrectMove = true;
         switch (command) {
             case MOVE_LEFT:
-                movePlayer(0, -1);
+                isIncorrectMove = movePlayer(0, -1);
                 break;
 
             case MOVE_RIGHT:
-                movePlayer(0, 1);
+                isIncorrectMove = movePlayer(0, 1);
                 break;
 
             case MOVE_UP:
-                movePlayer(1, 0);
+                isIncorrectMove = movePlayer(-1, 0);
                 break;
 
             case MOVE_DOWN:
-                movePlayer(-1, 0);
+                isIncorrectMove = movePlayer(1, 0);
                 break;
 
             case NO_MOVE:
+                isIncorrectMove = false;
                 break;
 
             default:
@@ -65,6 +69,7 @@ public class Player implements Fieldable {
                 break;
 
         }
+        return isIncorrectMove;
     }
 
     private void showError(String command) {
@@ -72,5 +77,35 @@ public class Player implements Fieldable {
                 " command, please verify and try again. ");
     }
 
-    public void movePlayer(int deltaRowIndex, int deltaColumnIndex){}
+    private Boolean movePlayer(int deltaRowIndex, int deltaColumnIndex) {
+
+        int newRowIndex = rowIndex + deltaRowIndex;
+        int newColumnIndex = columnIndex + deltaColumnIndex;
+
+        if ((newRowIndex >= 0) && (newRowIndex < field.getRows())
+                && (newColumnIndex >= 0) && (newColumnIndex < field.getColumns())
+                && !((field.getFieldable(newRowIndex, newColumnIndex)) instanceof Enemy)) {
+            if (field.getFieldable(newRowIndex, newColumnIndex) instanceof Flower) {
+
+                Flower flower = (Flower) field.getFieldable(newRowIndex, newColumnIndex);
+                game.setTransistorsGathered(flower.getTransistors());
+                game.getFlowerArrayList().remove(flower);
+                swapPlayer(newRowIndex, newColumnIndex);
+            }
+
+            if (field.getFieldable(newRowIndex, newColumnIndex) instanceof Empty) {
+                swapPlayer(newRowIndex, newColumnIndex);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private void swapPlayer(int newRowIndex, int newColumnIndex) {
+        field.setFieldable(newRowIndex, newColumnIndex, this);
+        field.setFieldable(rowIndex, columnIndex, new Empty());
+        rowIndex = newRowIndex;
+        columnIndex = newColumnIndex;
+    }
 }
