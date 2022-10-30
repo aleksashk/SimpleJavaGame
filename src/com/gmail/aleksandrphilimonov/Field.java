@@ -35,7 +35,7 @@ public class Field {
         for (int i = 0; i < sizeX; i++) {
             System.out.println();
             for (int j = 0; j < sizeY; j++) {
-                System.out.println(field[i][j].getSymbol());
+                System.out.print("\t" + field[i][j].getSymbol());
             }
         }
         System.out.println();

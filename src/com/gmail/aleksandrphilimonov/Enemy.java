@@ -1,0 +1,8 @@
+package com.gmail.aleksandrphilimonov;
+
+public class Enemy implements Fieldable{
+    @Override
+    public String getSymbol() {
+        return null;
+    }
+}

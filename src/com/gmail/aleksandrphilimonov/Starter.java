@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Starter {
 
-    public static int sizeX = 3;
-    public static int sizeY = 4;
+    public static int rows = 3;
+    public static int columns = 4;
     public static int amountOfEnemies = 10;
     public static int transistorsNeeded = 100;
     public static int moves = 40;
+    public static int getAmountOfFlowers = 10;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -53,7 +54,7 @@ public class Starter {
     }
 
     private static void startNewGame() {
-        Game game = new Game(sizeX, sizeY, amountOfEnemies, transistorsNeeded, moves);
+        Game game = new Game(rows, columns, amountOfEnemies, transistorsNeeded, moves, getAmountOfFlowers);
         game.fillFieldWithEmptyObjects();
         game.startGame();
     }

@@ -13,23 +13,26 @@ public class OptionsMenu {
 
             switch (command) {
                 case 1:
-                    System.out.println("\nCurrent settings:\n\trows: " + Starter.sizeX +
-                            "\n\tcolumns: " + Starter.sizeY +
+                    System.out.println("\nCurrent settings:\n\trows: " + Starter.rows +
+                            "\n\tcolumns: " + Starter.columns +
                             "\n\tenemies: " + Starter.amountOfEnemies +
                             "\n\ttransistors: " + Starter.transistorsNeeded +
-                            "\n\tmoves: " + Starter.moves + '\n');
+                            "\n\tmoves: " + Starter.moves +
+                            "\n\tflowers: " + Starter.getAmountOfFlowers + '\n');
                     break;
                 case 2:
                     System.out.println("Enter a new value for rows: ");
-                    Starter.sizeX = scanner.nextInt();
+                    Starter.rows = scanner.nextInt();
                     System.out.println("Enter a new value for columns: ");
-                    Starter.sizeY = scanner.nextInt();
+                    Starter.columns = scanner.nextInt();
                     System.out.println("Enter a new value for enemies: ");
                     Starter.amountOfEnemies = scanner.nextInt();
                     System.out.println("Enter a new value for transistors: ");
                     Starter.transistorsNeeded = scanner.nextInt();
                     System.out.println("Enter a new value for moves: ");
                     Starter.moves = scanner.nextInt();
+                    System.out.println("Enter a new value for flowers: ");
+                    Starter.getAmountOfFlowers = scanner.nextInt();
                     break;
                 case 3:
                     break;
