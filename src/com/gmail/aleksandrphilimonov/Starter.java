@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Starter {
 
-    public static int rows = 3;
-    public static int columns = 4;
-    public static int amountOfEnemies = 1;
+    public static int rows = 12;
+    public static int columns = 20;
+    public static int amountOfEnemies = 20;
     public static int transistorsNeeded = 100;
     public static int moves = 40;
-    public static int getAmountOfFlowers = 2;
+    public static int getAmountOfFlowers = 10;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

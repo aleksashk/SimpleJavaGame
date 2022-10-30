@@ -15,8 +15,8 @@ public class Game {
     private Field field;
     private boolean isGameFinished = false;
     private int amountOfFlowers;
-    private ArrayList<Flower> flowerArrayList = new ArrayList<Flower>();
-    private ArrayList<Enemy> enemyArrayList = new ArrayList<Enemy>();
+    private ArrayList<Flower> flowerArrayList = new ArrayList<>();
+    private ArrayList<Enemy> enemyArrayList = new ArrayList<>();
     private Random randomNumber = new Random();
     private Player player;
     private Scanner scanner = new Scanner(System.in);
@@ -134,12 +134,12 @@ public class Game {
 
     private void enemyMove() {
 
-        int rowIndex = 0;
-        int columnIndex = 0;
-        int newRowIndex = 0;
-        int newColumnIndex = 0;
+        int rowIndex;
+        int columnIndex;
+        int newRowIndex;
+        int newColumnIndex;
         int regenerateIndex = 0;
-        boolean isNeededToRegenerate = true;
+        boolean isNeededToRegenerate;
 
         for (Enemy enemy : enemyArrayList) {
 

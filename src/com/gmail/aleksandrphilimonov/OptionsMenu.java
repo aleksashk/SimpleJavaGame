@@ -21,18 +21,44 @@ public class OptionsMenu {
                             "\n\tflowers: " + Starter.getAmountOfFlowers + '\n');
                     break;
                 case 2:
-                    System.out.println("Enter a new value for rows: ");
-                    Starter.rows = scanner.nextInt();
-                    System.out.println("Enter a new value for columns: ");
-                    Starter.columns = scanner.nextInt();
-                    System.out.println("Enter a new value for enemies: ");
-                    Starter.amountOfEnemies = scanner.nextInt();
-                    System.out.println("Enter a new value for transistors: ");
-                    Starter.transistorsNeeded = scanner.nextInt();
-                    System.out.println("Enter a new value for moves: ");
-                    Starter.moves = scanner.nextInt();
-                    System.out.println("Enter a new value for flowers: ");
-                    Starter.getAmountOfFlowers = scanner.nextInt();
+                    String value;
+                    System.out.println("Enter a new value for rows, leave blank to keep current value [" + Starter.rows + "]:");
+
+                    scanner.nextLine();
+
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.rows = Integer.parseInt(value);
+                    }
+                    System.out.println("Enter a new value for columns, leave blank to keep current value [" + Starter.columns + "]:");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.columns = Integer.parseInt(value);
+                    }
+                    System.out.println("Enter a new value for enemies, leave blank to keep current value [" + Starter.amountOfEnemies + "]:");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.amountOfEnemies = Integer.parseInt(value);
+                    }
+                    System.out.println("Enter a new value for transistors, leave blank to keep current value [" + Starter.transistorsNeeded + "]:");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.transistorsNeeded = Integer.parseInt(value);
+                    }
+                    System.out.println("Enter a new value for moves, leave blank to keep current value [" + Starter.moves + "]:");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.moves = Integer.parseInt(value);
+                    }
+                    System.out.println("Enter a new value for flowers, leave blank to keep current value [" + Starter.getAmountOfFlowers + "]:");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()) {
+                        Starter.getAmountOfFlowers = Integer.parseInt(value);
+                    }
+                    if (isValuesNotPayable()) {
+                        System.out.println("Values you entered aren't playable, " +
+                                "please verify and try again!");
+                    }
                     break;
                 case 3:
                     break;
@@ -41,5 +67,11 @@ public class OptionsMenu {
                     break;
             }
         } while (command != 3);
+    }
+
+    private static Boolean isValuesNotPayable() {
+        int fieldSize = Starter.rows * Starter.columns;
+        int allGameObjects = Starter.amountOfEnemies + Starter.getAmountOfFlowers + 1;
+        return ((allGameObjects / fieldSize) > 0.75);
     }
 }
