@@ -90,7 +90,24 @@ public class Game {
     }
 
     private void possessEnemies() {
+        generateEnemies();
+    }
 
+    private void generateEnemies() {
+        for (int i = amountOfEnemies - enemyArrayList.size(); i > 0; ) {
+
+            int enemyRowPosition = randomNumber.nextInt(rows);
+            int enemyColumnPosition = randomNumber.nextInt(columns);
+
+            if (field.getFieldable(enemyRowPosition, enemyColumnPosition)
+                    instanceof Empty) {
+                Enemy enemy = new Enemy(enemyRowPosition, enemyColumnPosition);
+
+                field.setFieldable(enemyRowPosition, enemyColumnPosition, enemy);
+                enemyArrayList.add(enemy);
+                i--;
+            }
+        }
     }
 
     private void possessFlowers() {
@@ -124,7 +141,6 @@ public class Game {
         int newColumnIndex = 0;
         int regenerateIndex = 0;
         boolean isNeededToRegenerate = true;
-
 
         for (Enemy enemy : enemyArrayList) {
 
@@ -161,7 +177,6 @@ public class Game {
                         isNeededToRegenerate = swapEnemy(rowIndex, columnIndex, newRowIndex, newColumnIndex, enemy);
                     }
                 }
-
 
             } while (isNeededToRegenerate && regenerateIndex <= 10);
 
