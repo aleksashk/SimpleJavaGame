@@ -21,7 +21,6 @@ public class Game {
     private Player player;
     private Scanner scanner = new Scanner(System.in);
     private Boolean isIncorrectCommand = true;
-    private int triesToRegenerate = 10;
 
     public Game(int rows, int columns, int amountOfEnemies,
                 int transistorsNeeded, int turnsLeft, int amountOfFlowers) {
